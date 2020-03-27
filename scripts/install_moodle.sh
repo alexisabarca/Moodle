@@ -85,12 +85,6 @@ set -ex
       exit 1
     fi
 
-    # make sure system does automatic updates and fail2ban
-    sudo apt-get -y update
-    sudo apt-get -y install unattended-upgrades fail2ban
-
-    config_fail2ban
-
     # create gluster, nfs or Azure Files mount point
     mkdir -p /moodle
 
@@ -188,6 +182,12 @@ set -ex
     else
         sudo apt-get install -y --force-yes php-pgsql
     fi
+    
+    # make sure system does automatic updates and fail2ban
+    sudo apt-get -y update
+    sudo apt-get -y install unattended-upgrades fail2ban
+
+    config_fail2ban    
 
     # Set up initial moodle dirs
     mkdir -p /moodle/html
