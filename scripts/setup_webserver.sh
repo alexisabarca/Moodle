@@ -47,9 +47,6 @@ echo $htmlLocalCopySwitch >> /tmp/vars.txt
 check_fileServerType_param $fileServerType
 
 {
-  # make sure the system does automatic update
-  sudo apt-get -y update
-  sudo apt-get -y install unattended-upgrades
 
   # install pre-requisites
   sudo apt-get -y install python-software-properties unzip rsyslog
@@ -88,6 +85,10 @@ check_fileServerType_param $fileServerType
 
   # PHP Version
   PhpVer=$(get_php_version)
+  
+  # make sure the system does automatic update
+  sudo apt-get -y update
+  sudo apt-get -y install unattended-upgrades
 
   if [ $fileServerType = "gluster" ]; then
     # Mount gluster fs for /moodle
