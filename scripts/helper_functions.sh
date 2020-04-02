@@ -5,6 +5,8 @@
 function get_setup_params_from_configs_json
 {
     local configs_json_path=${1}    # E.g., /var/lib/cloud/instance/moodle_on_azure_configs.json
+    
+    echo "json path: $configs_json_path"
 
     (dpkg -l jq &> /dev/null) || (apt -y update; apt -y install jq)
 
